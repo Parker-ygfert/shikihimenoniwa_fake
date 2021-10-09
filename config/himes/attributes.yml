@@ -1,0 +1,79 @@
+development:
+  kogarashumaru:
+    original:
+      hp: 110
+      attack: 85
+      defense: 90
+      agility: 90
+      behavior: 8
+    increase:
+      hp: 6
+      attack: 5
+      defense: 6
+      agility: 4
+      behavior: 1
+  komainu:
+    original:
+      hp: 90
+      attack: 85
+      defense: 85
+      agility: 90
+      behavior: 8
+    increase:
+      hp: 6
+      attack: 5
+      defense: 6
+      agility: 4
+      behavior: 1
+  akki:
+    original:
+      hp: 90
+      attack: 95
+      defense: 85
+      agility: 70
+      behavior: 8
+    increase:
+      hp: 4
+      attack: 7
+      defense: 6
+      agility: 3
+      behavior: 1
+  shiroushagi:
+    original:
+      hp: 85
+      attack: 80
+      defense: 85
+      agility: 95
+      behavior: 8
+    increase:
+      hp: 5
+      attack: 5
+      defense: 3
+      agility: 7
+      behavior: 1
+  tengu:
+    original:
+      hp: 80
+      attack: 75
+      defense: 80
+      agility: 100
+      behavior: 8
+    increase:
+      hp: 4
+      attack: 7
+      defense: 4
+      agility: 6
+      behavior: 1
+  tennyo:
+    original:
+      hp: 80
+      attack: 70
+      defense: 65
+      agility: 65
+      behavior: 8
+    increase:
+      hp: 4
+      attack: 2
+      defense: 3
+      agility: 6
+      behavior: 1
