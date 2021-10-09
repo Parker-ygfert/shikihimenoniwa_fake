@@ -1,0 +1,16 @@
+zh-TW:
+  activerecord:
+    models:
+      species:
+        one: 種族
+        other: 種族
+    attributes:
+      species:
+        name: 種族名稱
+      species/name:
+        kogarashumaru: 小烏丸
+        komainu: 狛犬
+        akki: 惡鬼
+        shiroushagi: 白兔
+        tengu: 天狗
+        tennyo: 天女
