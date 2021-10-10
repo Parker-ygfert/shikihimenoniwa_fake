@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_155311) do
+ActiveRecord::Schema.define(version: 2021_10_10_164823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exp_configs", force: :cascade do |t|
+    t.integer "level"
+    t.integer "exp"
+    t.bigint "rank_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["rank_id"], name: "index_exp_configs_on_rank_id"
+  end
 
   create_table "hime_characters", force: :cascade do |t|
     t.string "name"
@@ -41,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_10_10_155311) do
     t.index ["rank_id"], name: "index_species_on_rank_id"
   end
 
+  add_foreign_key "exp_configs", "ranks"
   add_foreign_key "hime_characters", "species"
   add_foreign_key "species", "ranks"
 end
