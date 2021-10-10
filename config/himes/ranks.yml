@@ -1,0 +1,21 @@
+development:
+  - basic
+  - sub_basic
+  - advanced
+  - sub_advanced
+  - rare
+  - extra_rare
+  - super_extra_rare
+  - foreign
+  - foreign_rare
+  - foreign_extra_rare
+  - super_foreign_extra_rare
+  - senior
+  - sub_senior
+  - senior_extra_rare
+  - sub_senior_extra_rare
+  - super_senior_extra_rare
+  - sub_super_senior_extra_rare
+  - kyo_extra_rare
+  - myth_extra_rare
+  - majesty_extra_rare

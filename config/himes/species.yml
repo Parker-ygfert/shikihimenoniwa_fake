@@ -1,7 +1,8 @@
 development:
-  - kogarashumaru
-  - komainu
-  - akki
-  - shiroushagi
-  - tengu
-  - tennyo
+  basic:
+    - kogarashumaru
+    - komainu
+    - akki
+    - shiroushagi
+    - tengu
+    - tennyo
