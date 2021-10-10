@@ -1,0 +1,31 @@
+<%= link_to hime_levels_path, style: 'text-align: center' do %>
+  <h1>上一頁</h1>
+<% end %>
+
+<%= button_to hime_levels_path,
+              form: { style: 'margin-bottom: 1rem; text-align: center;' } do %>
+  <%= "新增#{Species.human_attribute_name("name.#{params[:species]}")}" %>
+  <%= hidden_field_tag :id, params[:id] %>
+  <%= hidden_field_tag :species, params[:species] %>
+<% end %>
+
+<% @himes.each do |hime| %>
+  <div style="display: flex; margin-top: 1rem;">
+    <%= image_pack_tag "#{params[:species]}.jpg" %>
+    <div>
+      <%= form_tag hime_level_path, method: :patch, style: 'margin-left: 1rem;' do %>
+        <%= hidden_field_tag :hime_id, hime.id %>
+        <%= label_tag :exp, HimeCharacter.human_attribute_name(:exp) %>：
+        <%= number_field_tag :exp, nil %>
+        <%= submit_tag '增加' %>
+      <% end %>
+      <ul>
+        <li>種族：<%= Species.human_attribute_name("name.#{hime.species_name}") %></li>
+        <li>名字：<%= hime.name %></li>
+        <li>等級：<%= hime.level %></li>
+        <li>經驗：<%= hime.exp %></li>
+        <li>需要經驗：<%= hime.required_exp %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>

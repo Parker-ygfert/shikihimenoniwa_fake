@@ -1,5 +1,5 @@
 development:
-  kogarashumaru:
+  kogarasumaru:
     original:
       hp: 110
       attack: 85
@@ -38,7 +38,7 @@ development:
       defense: 6
       agility: 3
       behavior: 1
-  shiroushagi:
+  sirousagi:
     original:
       hp: 85
       attack: 80

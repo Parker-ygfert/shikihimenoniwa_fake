@@ -1,16 +1,21 @@
 zh-TW:
   activerecord:
     models:
+      hime_character:
+        one: 式姬
+        other: 式姬
       species:
         one: 種族
         other: 種族
     attributes:
+      hime_character:
+        exp: 經驗值
       species:
         name: 種族名稱
       species/name:
-        kogarashumaru: 小烏丸
+        kogarasumaru: 小烏丸
         komainu: 狛犬
         akki: 惡鬼
-        shiroushagi: 白兔
+        sirousagi: 白兔
         tengu: 天狗
         tennyo: 天女

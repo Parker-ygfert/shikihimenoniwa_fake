@@ -7,10 +7,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%#= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body style="width: 100vw;">
+    <div style="margin: auto; width: max-content;">
+      <%= yield %>
+    </div>
   </body>
 </html>

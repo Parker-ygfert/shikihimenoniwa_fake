@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
-    command: bash -c "bundle install && rake db:reset && rm -f tmp/pids/server.pid && rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "yarn install --check-files && bundle install && rake db:reset && bundle exec foreman start -f Procfile.dev"
     stdin_open: true
     tty: true
     volumes:

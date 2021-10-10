@@ -1,63 +1,50 @@
+<style>
+  div.images:not(:first-child) {
+    margin-left: 1rem;
+  }
+</style>
+
 <div style="display: flex;">
-  <%= button_to nil, url: hime_levels_path, style: 'cursor: pointer;' do %>
-    <%= hidden_field_tag :species, :kogarashumaru %>
-    <img src="https://cdn.wikiwiki.jp/to/w/shikigarden/%E5%BC%8F%E5%A7%AB/%E5%B0%8F%E7%83%8F%E4%B8%B8/::ref/kogarasumaru.jpg?rev=da08ffa362f63d223adfa5a0f83e4a79&t=20130122180534" alt="" style=>
-  <% end %>
-  <%= button_to nil, url: hime_levels_path, style: 'cursor: pointer;' do %>
-    <%= hidden_field_tag :species, :komainu %>
-    <img src="https://cdn.wikiwiki.jp/to/w/shikigarden/%E5%BC%8F%E5%A7%AB/%E7%8B%9B%E7%8A%AC/::ref/komainu.jpg?rev=585b1272d4f09c841d0f38cae690f6be&t=20130122211647" alt="">
-  <% end %>
-  <%= button_to nil, url: hime_levels_path, style: 'cursor: pointer;' do %>
-    <%= hidden_field_tag :species, :akki %>
-    <img src="https://cdn.wikiwiki.jp/to/w/shikigarden/%E5%BC%8F%E5%A7%AB/%E6%82%AA%E9%AC%BC/::ref/akki.jpg?rev=69db66e77b8e598cf1e161d57fd16709&t=20130122214459" alt="">
-  <% end %>
-  <%= button_to nil, url: hime_levels_path, style: 'cursor: pointer;' do %>
-    <%= hidden_field_tag :species, :shiroushagi %>
-    <img src="https://cdn.wikiwiki.jp/to/w/shikigarden/%E5%BC%8F%E5%A7%AB/%E7%99%BD%E5%85%8E/::ref/shirousagi.jpg?rev=92811d005d7a068f6e8a0048a41d8629&t=20130122214510" alt="">
-  <% end %>
-  <%= button_to nil, url: hime_levels_path, style: 'cursor: pointer;' do %>
-    <%= hidden_field_tag :species, :tengu %>
-    <img src="https://cdn.wikiwiki.jp/to/w/shikigarden/%E5%BC%8F%E5%A7%AB/%E5%A4%A9%E7%8B%97/::ref/tengu.jpg?rev=ed430a370de68eec2549c19fc0dbdf24&t=20130122214448" alt="">
-  <% end %>
-  <%= button_to nil, url: hime_levels_path, style: 'cursor: pointer;' do %>
-    <%= hidden_field_tag :species, :tennyo %>
-    <img src="https://cdn.wikiwiki.jp/to/w/shikigarden/%E5%BC%8F%E5%A7%AB/%E5%A4%A9%E5%A5%B3/::ref/tennyo.jpg?rev=d61e49a304b4595f74dc4cf628d99cd7&t=20130122215012" alt="">
+  <% @all_species.each do |species| %>
+    <div class="images">
+      <%= link_to hime_levels_path(params.permit!.merge species: species), style: 'cursor: pointer;' do %>
+        <%= image_pack_tag "#{species}.jpg" %>
+      <% end %>
+      <%= link_to '升級 Demo', hime_level_path(instance_variable_get("@#{species}") || 0, species: species),
+                  style: 'display: block; border: 1px solid #000; padding: 5px; background: #ccc; text-align: center;' %>
+    </div>
   <% end %>
 </div>
 
-<% if @hime %>
+<% if @attributes %>
   <ul>
-    <li>種族：<%= Species.human_attribute_name("name.#{@hime.species.name}") %></li>
-    <li>名字：<%= @hime.name %></li>
-    <li>等級：<%= @hime.level %></li>
+    <li>種族：<%= Species.human_attribute_name("name.#{params[:species]}") %></li>
+    <li>等級上限：<%= params[:level] || 10 %></li>
   </ul>
 
   <%= form_tag hime_levels_path, method: :get do %>
-      <%= hidden_field_tag :id, @hime.id %>
+    <%= hidden_field_tag :species, params[:species] %>
     <%= label_tag :level, '等級上限：' %>
-    <%= text_field_tag :level, params[:level] %>
+    <%= number_field_tag :level, params[:level] %>
     <%= submit_tag '送出', style: 'cursor: pointer;' %>
   <% end %>
-<% end %>
 
-<% if @attributes %>
-  <table style="border: 1px solid #000; border-collapse:collapse;text-align: center;">
+  <table style="border: 1px solid #000; border-collapse:collapse; text-align: center; margin-top: 1rem;">
     <thead>
       <tr>
-        <th style="border: 1px solid #000;padding: 5px 30px;">等級</th>
-        <th style="border: 1px solid #000;padding: 5px 30px;">血量</th>
-        <th style="border: 1px solid #000;padding: 5px 30px;">攻擊</th>
-        <th style="border: 1px solid #000;padding: 5px 30px;">防禦</th>
-        <th style="border: 1px solid #000;padding: 5px 30px;">敏捷</th>
-        <th style="border: 1px solid #000;padding: 5px 30px;">特性</th>
+        <% %i[等級 血量 攻擊 防禦 敏捷 特性].each do |attribute| %>
+          <th style="border: 1px solid #000; padding: 5px 30px;">
+            <%= attribute %>
+          </th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
         <% @attributes.each do |level, attrs| %>
           <tr>
-            <td style="border: 1px solid #000;padding: 5px 30px;"><%= level %></td>
+            <td style="border: 1px solid #000; padding: 5px 30px;"><%= level %></td>
             <% attrs.values.each do |value| %>
-              <td style="border: 1px solid #000;padding: 5px 30px;"><%= value %></td>
+              <td style="border: 1px solid #000; padding: 5px 30px;"><%= value %></td>
             <% end %>
           </tr>
         <% end %>
