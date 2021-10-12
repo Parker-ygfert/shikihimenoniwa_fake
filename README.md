@@ -1,20 +1,24 @@
-### docker command
-```bash
-$ docker-compose build
-# 建立 image Dockerfile 有更動時需要下此指令
+# README
 
-$ docker-compose up
-# 建立並啟動 containers
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-$ docker-compose exec app bash
-# 進入 app container bash
-```
+Things you may want to cover:
 
-### rails 指令
-```bash
-$ rails s -p 3000 -b '0.0.0.0'
-# 啟動 rails server
+* Ruby version
 
-$ rails restart
-重啟 rails server
-```
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

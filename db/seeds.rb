@@ -11,13 +11,13 @@
 rank_data = Rails.application.config_for('himes/ranks')
 species_data = Rails.application.config_for('himes/species')
 exp_config_data = Rails.application.config_for('himes/exp_configs')
-rank_data.each.with_index(1) do |rank, index|
-  rank_obj = Rank.where(id: index, name: rank).first_or_create
+rank_data.each do |rank|
+  rank_obj = Rank.where(name: rank).first_or_create
   p "[Rank] name: #{rank_obj.name}"
   next unless species_data[rank]
 
-  species_data[rank].each.with_index(1) do |species, index|
-    species_obj = Species.where(id: index, name: species, rank_id: rank_obj.id).first_or_create
+  species_data[rank].each do |species|
+    species_obj = Species.where(name: species, rank_id: rank_obj.id).first_or_create
     p "[Species] name: #{species_obj.name}, rank: #{rank_obj.name}"
   end
 
